@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace loccounter
 {
@@ -6,7 +7,15 @@ namespace loccounter
 	{
 		public static void Main (string[] args)
 		{
-			Console.WriteLine ("Hello World!");
+			var filenames = Directory.GetFiles (args[0], "*.cs", SearchOption.AllDirectories);
+
+			var totalLOC = 0;
+			foreach (var fn in filenames) {
+				var lines = File.ReadAllLines (fn);
+				totalLOC += lines.Length;
+			}
+
+			Console.WriteLine (totalLOC);
 		}
 	}
 }
