@@ -35,7 +35,8 @@ namespace loccounter
 
 		static IEnumerable<string> Relevante_Zeilen_extrahieren (IEnumerable<string[]> dateien)
 		{
-			return dateien.SelectMany (d => d.Where (l => l.Trim () != "").Where (l => !l.Trim ().StartsWith ("//")));
+			return dateien.SelectMany (d => d.Where (l => l.Trim () != "")
+											 .Where (l => !l.Trim ().StartsWith ("//")));
 		}
 
 		static object Ergebnis_bestimmen (IEnumerable<string> zeilen)
