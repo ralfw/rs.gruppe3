@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace expressioncalculator
 {
@@ -42,19 +43,35 @@ namespace expressioncalculator
 		private void Tokenize(string source, Action<Token[]> onSuccess, Action<string> onError) {
 			onSuccess (new Token[]{ 
 				new OperandToken{Value=2},
-				new OperatorToken{Op=OperatorToken.Operators.Add},
+				new OperatorToken{Op=Operators.Add},
 				new OperandToken{Value=3},
-				new OperatorToken{Op=OperatorToken.Operators.Multiply},
+				new OperatorToken{Op=Operators.Multiply},
 				new OperandToken{Value=4},
 			});
 		}
 
 		private void Parse(Token[] tokens, Action<AST> onSuccess, Action<string> onError) {
-			onError ("no parsing yet");
+			var root = new OperatorNode{
+				Op = Operators.Add,
+				Left = new OperandNode{Value=2},
+				Right = new OperatorNode{
+					Op = Operators.Multiply,
+					Left = new OperandNode{Value=3},
+					Right = new OperandNode{Value=4}
+				}
+			};
+			onSuccess (new AST{Root = root});
 		}
 	}
 		
 
+
+	public enum Operators {
+		Add,
+		Substract,
+		Multiply,
+		Divide
+	}
 
 	class Token {}
 
@@ -63,15 +80,24 @@ namespace expressioncalculator
 	}
 
 	class OperatorToken : Token {
-		public enum Operators {
-			Add,
-			Substract,
-			Multiply,
-			Divide
-		}
 		public Operators Op;
 	}
 
 
-	class AST {}
+	class AST {
+		public Node Root;
+	}
+
+	abstract class Node {
+		public Node Left, Right;
+	}
+
+	class OperatorNode : Node {
+		public Operators Op;
+	}
+
+	class OperandNode : Node {
+		public int Value;
+	}
+
 }
