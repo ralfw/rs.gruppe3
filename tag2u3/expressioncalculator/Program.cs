@@ -25,9 +25,29 @@ namespace expressioncalculator
 
 	class ExpressionEvaluator{
 		public void Eval(AST expression, Action<int> onResult, Action<string> onError) {
-			onError ("no eval yet!");
+			var result = Eval (expression.Root);
+			onResult (result);
+		}
+			
+		private int Eval(Node node) {
+			var operand = node as OperandNode;
+			if (operand != null)
+				return operand.Value;
+			else {
+				var leftValue = Eval (node.Left);
+				var rightValue = Eval (node.Right);
+				switch ((node as OperatorNode).Op) {
+				case Operators.Add:
+					return leftValue + rightValue;
+				case Operators.Multiply:
+					return leftValue * rightValue;
+				default:
+					throw new NotImplementedException ("Invalid operator!");
+				}
+			}
 		}
 	}
+		
 
 
 	class ExpressionCompiler {
@@ -52,13 +72,13 @@ namespace expressioncalculator
 
 		private void Parse(Token[] tokens, Action<AST> onSuccess, Action<string> onError) {
 			var root = new OperatorNode{
-				Op = Operators.Add,
-				Left = new OperandNode{Value=2},
-				Right = new OperatorNode{
-					Op = Operators.Multiply,
-					Left = new OperandNode{Value=3},
-					Right = new OperandNode{Value=4}
-				}
+				Op = Operators.Multiply,
+				Left = new OperatorNode{
+					Op = Operators.Add,
+					Left = new OperandNode{Value=2},
+					Right = new OperandNode{Value=3}
+				},
+				Right = new OperandNode{Value=4}
 			};
 			onSuccess (new AST{Root = root});
 		}
