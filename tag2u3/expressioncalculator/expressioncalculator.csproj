@@ -36,23 +36,22 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="adapter\ConsolePortal.cs" />
-    <Compile Include="adapter\CommandlinePortal.cs" />
     <Compile Include="messages\AST.cs" />
     <Compile Include="messages\Token.cs" />
-    <Compile Include="compiler\Scanner.cs" />
-    <Compile Include="compiler\Compiler.cs" />
     <Compile Include="messages\Operators.cs" />
-    <Compile Include="compiler\Parser.cs" />
-    <Compile Include="evaluation\Evaluator.cs" />
     <Compile Include="utils\Errorhandling.cs" />
+    <Compile Include="adapters\ConsolePortal.cs" />
+    <Compile Include="adapters\CommandlinePortal.cs" />
+    <Compile Include="domain\compiler\Compiler.cs" />
+    <Compile Include="domain\compiler\Parser.cs" />
+    <Compile Include="domain\compiler\Scanner.cs" />
+    <Compile Include="domain\Evaluator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Folder Include="compiler\" />
-    <Folder Include="adapter\" />
     <Folder Include="messages\" />
-    <Folder Include="evaluation\" />
     <Folder Include="utils\" />
+    <Folder Include="adapters\" />
+    <Folder Include="domain\" />
   </ItemGroup>
 </Project>
