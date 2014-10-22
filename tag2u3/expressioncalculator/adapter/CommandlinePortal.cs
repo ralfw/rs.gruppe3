@@ -9,7 +9,7 @@ namespace expressioncalculator
 			if (Environment.GetCommandLineArgs ().Length > 1)
 				onExpression (string.Join (" ", Environment.GetCommandLineArgs ().Skip (1)));
 			else
-				onError ("Usage example: expressioncalculator 2 + 3 x 4 / 5");
+				onError ("Missing expression on command line. Usage example: expressioncalculator 2 + 3 x 4 / 5");
 		}
 	}
 	
