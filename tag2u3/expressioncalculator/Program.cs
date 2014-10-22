@@ -40,7 +40,13 @@ namespace expressioncalculator
 
 
 		private void Tokenize(string source, Action<Token[]> onSuccess, Action<string> onError) {
-			onError("no tokenization yet");
+			onSuccess (new Token[]{ 
+				new OperandToken{Value=2},
+				new OperatorToken{Op=OperatorToken.Operators.Add},
+				new OperandToken{Value=3},
+				new OperatorToken{Op=OperatorToken.Operators.Multiply},
+				new OperandToken{Value=4},
+			});
 		}
 
 		private void Parse(Token[] tokens, Action<AST> onSuccess, Action<string> onError) {
@@ -48,17 +54,24 @@ namespace expressioncalculator
 		}
 	}
 		
-	class CommandlinePortal {
-		public void Read_expression(Action<string> onExpression, Action<string> onError) {
-			if (Environment.GetCommandLineArgs ().Length > 1)
-				onExpression (string.Join (" ", Environment.GetCommandLineArgs ().Skip (1)));
-			else
-				onError ("Usage example: expressioncalculator 2 + 3 x 4 / 5");
-		}
-	}
 
 
 	class Token {}
+
+	class OperandToken : Token {
+		public int Value;
+	}
+
+	class OperatorToken : Token {
+		public enum Operators {
+			Add,
+			Substract,
+			Multiply,
+			Divide
+		}
+		public Operators Op;
+	}
+
 
 	class AST {}
 }
