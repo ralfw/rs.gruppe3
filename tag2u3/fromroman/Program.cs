@@ -35,7 +35,7 @@ namespace fromroman
 
 		static int[] Determine_signs (int[] runeValues)
 		{
-			var signs = Enumerable.Range (1, runeValues.Length).Select (_ => 1).ToArray ();
+			var signs = Enumerable.Repeat (1, runeValues.Length).ToArray ();
 			for (var i = 0; i < runeValues.Length - 1; i++)
 				if (runeValues [i] < runeValues [i + 1])
 					signs [i] = -1;
