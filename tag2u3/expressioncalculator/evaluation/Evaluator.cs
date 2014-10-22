@@ -17,26 +17,28 @@ namespace expressioncalculator
 			
 		private int Eval(Node node) {
 			var operand = node as OperandNode;
-			if (operand != null)
-				return operand.Value;
-			else {
-				var leftValue = Eval (node.Left);
-				var rightValue = Eval (node.Right);
-				switch ((node as OperatorNode).Op) {
-				case Operators.Add:
-					return leftValue + rightValue;
-				case Operators.Substract:
-					return leftValue - rightValue;
-				case Operators.Multiply:
-					return leftValue * rightValue;
-				case Operators.Divide:
-					if (rightValue == 0)
-						throw new DivideByZeroException ("Division by zero!");
-					else
-						return leftValue / rightValue;
-				default:
-					throw new NotImplementedException ("Invalid operator!");
-				}
+			if (operand != null) return operand.Value;
+
+			var leftValue = Eval (node.Left);
+			var rightValue = Eval (node.Right);
+			return Execute ((node as OperatorNode).Op, leftValue, rightValue);
+		}
+
+		private int Execute(Operators op, int leftValue, int rightValue) {
+			switch (op) {
+			case Operators.Add:
+				return leftValue + rightValue;
+			case Operators.Substract:
+				return leftValue - rightValue;
+			case Operators.Multiply:
+				return leftValue * rightValue;
+			case Operators.Divide:
+				if (rightValue == 0)
+					throw new DivideByZeroException ("Division by zero!");
+				else
+					return leftValue / rightValue;
+			default:
+				throw new NotImplementedException ("Invalid operator!");
 			}
 		}
 	}
