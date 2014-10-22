@@ -56,19 +56,22 @@ namespace expressioncalculator
 
 		private Node Recognize_expression(List<Token> tokenstream) {
 			var node = Recognize_value (tokenstream);
+			return Recognize_expression_tail (node, tokenstream);
 
-			while (tokenstream.Count > 0 && (tokenstream.First () as OperatorToken) != null) {
-				var op = Recognize_operator (tokenstream);
-				var rightOperand = Recognize_value (tokenstream);
 
-				op.Left = node;
-				op.Right = rightOperand;
-				node = op;
-			}
 
-			return node;
 		}
 
+		private Node Recognize_expression_tail(Node node, List<Token> tokenstream) {
+			if (tokenstream.Count == 0)	return node;
+
+			var op = Recognize_operator (tokenstream);
+			op.Left = node;
+			op.Right = Recognize_value (tokenstream);
+
+			return Recognize_expression_tail (op, tokenstream);
+		}
+			
 		private Node Recognize_value(List<Token> tokenstream) {
 			var operand = tokenstream.FirstOrDefault () as OperandToken;
 			if (operand != null) {
