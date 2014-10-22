@@ -5,9 +5,9 @@ using System.Collections.Generic;
 namespace expressioncalculator
 {
 
-	class ExpressionEvaluator{
+	class Evaluator{
 		public void Eval(AST expression, Action<int> onResult, Action<string> onError) {
-			Try (
+			Errorhandling.Try (
 				() => {
 					var result = Eval (expression.Root);
 					onResult (result);
@@ -31,7 +31,7 @@ namespace expressioncalculator
 					return leftValue * rightValue;
 				case Operators.Divide:
 					if (rightValue == 0)
-						throw new DivideByZeroException ();
+						throw new DivideByZeroException ("Division by zero!");
 					else
 						return leftValue / rightValue;
 				default:
@@ -39,15 +39,5 @@ namespace expressioncalculator
 				}
 			}
 		}
-			
-		private void Try(Action execute, Action<string> onError) {
-			try {
-				execute();
-			}
-			catch(Exception ex) {
-				onError ("Evaluation failed with: " + ex.GetType().Name);
-			}
-		}
 	}
-
 }

@@ -10,8 +10,8 @@ namespace expressioncalculator
 		{
 			var cmd = new CommandlinePortal ();
 			var con = new ConsolePortal ();
-			var comp = new ExpressionCompiler ();
-			var exp = new ExpressionEvaluator ();
+			var comp = new Compiler ();
+			var exp = new Evaluator ();
 
 			cmd.Read_expression (
 				source => comp.Compile(source,
@@ -23,54 +23,8 @@ namespace expressioncalculator
 		}
 	}
 
-	class ExpressionEvaluator{
-		public void Eval(AST expression, Action<int> onResult, Action<string> onError) {
-			Try (
-				() => {
-					var result = Eval (expression.Root);
-					onResult (result);
-				},
-				onError);
-		}
-			
-		private int Eval(Node node) {
-			var operand = node as OperandNode;
-			if (operand != null)
-				return operand.Value;
-			else {
-				var leftValue = Eval (node.Left);
-				var rightValue = Eval (node.Right);
-				switch ((node as OperatorNode).Op) {
-				case Operators.Add:
-					return leftValue + rightValue;
-				case Operators.Substract:
-					return leftValue - rightValue;
-				case Operators.Multiply:
-					return leftValue * rightValue;
-				case Operators.Divide:
-					if (rightValue == 0)
-						throw new DivideByZeroException ();
-					else
-						return leftValue / rightValue;
-				default:
-					throw new NotImplementedException ("Invalid operator!");
-				}
-			}
-		}
-			
-		private void Try(Action execute, Action<string> onError) {
-			try {
-				execute();
-			}
-			catch(Exception ex) {
-				onError ("Evaluation failed with: " + ex.GetType().Name);
-			}
-		}
-	}
-		
 
-
-	class ExpressionCompiler {
+	class Compiler {
 		public void Compile(string source, Action<AST> onSuccess, Action<string> onError) {
 			Tokenize (source,
 				tokens => Parse (tokens,
@@ -90,54 +44,49 @@ namespace expressioncalculator
 			});
 		}
 
+
 		private void Parse(Token[] tokens, Action<AST> onSuccess, Action<string> onError) {
-			var root = new OperatorNode{
-				Op = Operators.Multiply,
-				Left = new OperatorNode{
-					Op = Operators.Add,
-					Left = new OperandNode{Value=2},
-					Right = new OperandNode{Value=3}
-				},
-				Right = new OperandNode{Value=4}
-			};
-			onSuccess (new AST{Root = root});
+			var tokenstream = new List<Token> (tokens);
+			var node = Recognize_expression (tokenstream);
+			if (tokenstream.Count == 0)
+				onSuccess (new AST{ Root = node });
+			else
+				onError ("Unexpected end of expression!");
+		}
+
+		private Node Recognize_expression(List<Token> tokenstream) {
+			var node = Recognize_value (tokenstream);
+
+			while (tokenstream.Count > 0 && (tokenstream.First () as OperatorToken) != null) {
+				var op = Recognize_operator (tokenstream);
+				var rightOperand = Recognize_value (tokenstream);
+
+				op.Left = node;
+				op.Right = rightOperand;
+				node = op;
+			}
+
+			return node;
+		}
+
+		private Node Recognize_value(List<Token> tokenstream) {
+			var operand = tokenstream.FirstOrDefault () as OperandToken;
+			if (operand != null) {
+				tokenstream.RemoveAt (0);
+				return new OperandNode{ Value = operand.Value };
+			}
+			else
+				throw new InvalidOperationException ("Missing value!");
+		}
+
+		private Node Recognize_operator(List<Token> tokenstream) {
+			var op = tokenstream.FirstOrDefault () as OperatorToken;
+			if (op != null) {
+				tokenstream.RemoveAt (0);
+				return new OperatorNode{ Op = op.Op };
+			}
+			else
+				throw new InvalidOperationException ("Missing operator!");
 		}
 	}
-		
-
-
-	public enum Operators {
-		Add,
-		Substract,
-		Multiply,
-		Divide
-	}
-
-	class Token {}
-
-	class OperandToken : Token {
-		public int Value;
-	}
-
-	class OperatorToken : Token {
-		public Operators Op;
-	}
-
-
-	class AST {
-		public Node Root;
-	}
-
-	abstract class Node {
-		public Node Left, Right;
-	}
-
-	class OperatorNode : Node {
-		public Operators Op;
-	}
-
-	class OperandNode : Node {
-		public int Value;
-	}
-
 }
