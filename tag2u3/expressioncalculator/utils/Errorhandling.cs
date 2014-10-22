@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 namespace expressioncalculator
 {
-
 	class Errorhandling {
 		public static void Try(Action execute, Action<string> onError) {
 			try {

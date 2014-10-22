@@ -3,7 +3,6 @@ using System.Linq;
 
 namespace expressioncalculator
 {
-
 	class ConsolePortal {
 		public void Display_result(int result) {
 			Console.ForegroundColor = ConsoleColor.Green;
@@ -17,5 +16,4 @@ namespace expressioncalculator
 			Console.ResetColor ();
 		}
 	}
-	
 }

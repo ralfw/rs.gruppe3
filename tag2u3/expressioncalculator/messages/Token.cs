@@ -4,8 +4,7 @@ using System.Collections.Generic;
 
 namespace expressioncalculator
 {
-
-	class Token {}
+	abstract class Token {}
 
 	class OperandToken : Token {
 		public int Value;

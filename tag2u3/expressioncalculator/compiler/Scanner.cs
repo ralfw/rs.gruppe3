@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 namespace expressioncalculator
 {
-
 	class Scanner {
 		public void Tokenize(string source, Action<Token[]> onSuccess, Action<string> onError) {
 			var tokens = new List<Token> ();

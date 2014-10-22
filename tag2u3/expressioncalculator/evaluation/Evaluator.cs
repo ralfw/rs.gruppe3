@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 namespace expressioncalculator
 {
-
 	class Evaluator{
 		public void Eval(AST expression, Action<int> onResult, Action<string> onError) {
 			Errorhandling.Try (

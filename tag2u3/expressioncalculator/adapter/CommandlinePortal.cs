@@ -3,7 +3,6 @@ using System.Linq;
 
 namespace expressioncalculator
 {
-		
 	class CommandlinePortal {
 		public void Read_expression(Action<string> onExpression, Action<string> onError) {
 			if (Environment.GetCommandLineArgs ().Length > 1)
