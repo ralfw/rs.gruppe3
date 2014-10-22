@@ -1,15 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="expressioncalculator/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="expressioncalculator/evaluation/Evaluator.cs">
     <Files>
-      <File FileName="fromroman/Program.cs" Line="45" Column="45" />
       <File FileName="expressioncalculator/Program.cs" Line="27" Column="27" />
       <File FileName="expressioncalculator/compiler/Compiler.cs" Line="30" Column="30" />
       <File FileName="expressioncalculator/compiler/Parser.cs" Line="14" Column="14" />
-      <File FileName="expressioncalculator/compiler/Scanner.cs" Line="4" Column="4" />
-      <File FileName="expressioncalculator/evaluation/Evaluator.cs" Line="1" Column="1" />
-      <File FileName="expressioncalculator/adapter/ConsolePortal.cs" Line="4" Column="4" />
-      <File FileName="expressioncalculator/adapter/CommandlinePortal.cs" Line="49" Column="49" />
+      <File FileName="expressioncalculator/compiler/Scanner.cs" Line="2" Column="2" />
+      <File FileName="expressioncalculator/evaluation/Evaluator.cs" Line="60" Column="60" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
