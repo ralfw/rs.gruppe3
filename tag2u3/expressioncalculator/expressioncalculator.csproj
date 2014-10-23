@@ -45,7 +45,9 @@
     <Compile Include="domain\compiler\Compiler.cs" />
     <Compile Include="domain\compiler\Parser.cs" />
     <Compile Include="domain\compiler\Scanner.cs" />
-    <Compile Include="domain\Evaluator.cs" />
+    <Compile Include="domain\evaluation\IEvaluator.cs" />
+    <Compile Include="domain\evaluation\ListEvaluator.cs" />
+    <Compile Include="domain\evaluation\TreeEvaluator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -53,5 +55,6 @@
     <Folder Include="utils\" />
     <Folder Include="adapters\" />
     <Folder Include="domain\" />
+    <Folder Include="domain\evaluation\" />
   </ItemGroup>
 </Project>
