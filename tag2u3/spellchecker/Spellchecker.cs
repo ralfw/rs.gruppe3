@@ -7,7 +7,7 @@ namespace spellchecker
 {
 	class Spellchecker {
 		public string[] In_Worte_zerlegen(string text) {
-			return text.Split (new[]{ ' ' }, StringSplitOptions.RemoveEmptyEntries);
+			return text.Split (new[]{ ' ', '.', ',', '!', ';', ':', '?' }, StringSplitOptions.RemoveEmptyEntries);
 		}
 
 		public string[] Worte_prüfen(Dictionary dict, string[] worte) {
