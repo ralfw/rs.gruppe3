@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 namespace expressioncalculator
 {
-
 	class ListEvaluator : IEvaluator {
 		public void Eval(AST expression, Action<int> onResult, Action<string> onError) {
 			Errorhandling.Try (
@@ -25,14 +24,18 @@ namespace expressioncalculator
 			return new Stack<int> (values.Reverse ());
 		}
 			
-		int Apply_operators(Operators[] ops, Stack<int> operands) {
-			foreach (var op in ops) {
-				var left = operands.Pop ();
-				var right = operands.Pop ();
-				var result = Execute (op, left, right);
-				operands.Push (result);
-			}
-			return operands.Pop ();
+		int Apply_operators(IEnumerable<Operators> ops, Stack<int> operands) {
+			if (!ops.Any ()) return operands.Pop ();
+
+			Apply_operator (ops.First(), operands);
+			return Apply_operators (ops.Skip (1), operands);
+		}
+
+		private void Apply_operator(Operators op, Stack<int> operands) {
+			var left = operands.Pop ();
+			var right = operands.Pop ();
+			var result = Execute (op, left, right);
+			operands.Push (result);
 		}
 
 		private int Execute(Operators op, int leftValue, int rightValue) {
