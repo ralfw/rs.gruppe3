@@ -9,7 +9,8 @@ namespace spellchecker
 		{
 			var ui = new UI ();
 			var spell = new Spellchecker ();
-			var sc = new Interactions (spell);
+			var dictRepo = new DictionaryRepo ();
+			var sc = new Interactions (spell, dictRepo);
 
 			ui.Prüfgrundlage_verändert += text => {
 				var fehler = sc.Prüfen (text);
