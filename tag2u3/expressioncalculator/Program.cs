@@ -14,7 +14,7 @@ namespace expressioncalculator
 							new Scanner(),
 							new Parser()
 						);
-			var exp = new Evaluator ();
+			IEvaluator exp = new ListEvaluator ();
 
 
 			cmd.Read_expression (
