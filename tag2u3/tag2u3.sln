@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fromroman", "fromroman\from
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "expressioncalculator", "expressioncalculator\expressioncalculator.csproj", "{6729A944-D15C-4658-854E-D2840ABC2800}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spellchecker", "spellchecker\spellchecker.csproj", "{C1815700-0959-440A-ADD8-D9E7D9EF3E5A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -19,8 +21,12 @@ Global
 		{6729A944-D15C-4658-854E-D2840ABC2800}.Debug|x86.Build.0 = Debug|x86
 		{6729A944-D15C-4658-854E-D2840ABC2800}.Release|x86.ActiveCfg = Release|x86
 		{6729A944-D15C-4658-854E-D2840ABC2800}.Release|x86.Build.0 = Release|x86
+		{C1815700-0959-440A-ADD8-D9E7D9EF3E5A}.Debug|x86.ActiveCfg = Debug|x86
+		{C1815700-0959-440A-ADD8-D9E7D9EF3E5A}.Debug|x86.Build.0 = Debug|x86
+		{C1815700-0959-440A-ADD8-D9E7D9EF3E5A}.Release|x86.ActiveCfg = Release|x86
+		{C1815700-0959-440A-ADD8-D9E7D9EF3E5A}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = expressioncalculator\expressioncalculator.csproj
+		StartupItem = spellchecker\spellchecker.csproj
 	EndGlobalSection
 EndGlobal
