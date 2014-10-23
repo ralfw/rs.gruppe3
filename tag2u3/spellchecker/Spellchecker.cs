@@ -10,10 +10,9 @@ namespace spellchecker
 		}
 
 		public string[] Worte_prüfen(Dictionary dict, string[] worte) {
-			var wörterbuch = new HashSet<string>(){ "hund", "katze", "maus" };
 			var fehler = new List<string> ();
 			foreach (var w in worte) {
-				if (!wörterbuch.Contains(w.ToLower()))
+				if (!dict.Contains(w.ToLower()))
 					fehler.Add(w);
 			}
 			return fehler.ToArray ();
