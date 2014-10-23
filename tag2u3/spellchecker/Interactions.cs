@@ -19,11 +19,4 @@ namespace spellchecker
 			return this.spell.Worte_prüfen (dict, worte);
 		}
 	}
-
-
-	class DictionaryRepo {
-		public Dictionary Laden() {
-			return new Dictionary ();
-		}
-	}
 }

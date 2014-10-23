@@ -42,6 +42,12 @@
     <Compile Include="Interactions.cs" />
     <Compile Include="Dictionary.cs" />
     <Compile Include="Spellchecker.cs" />
+    <Compile Include="DictionaryRepo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <None Include="Deutsch.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

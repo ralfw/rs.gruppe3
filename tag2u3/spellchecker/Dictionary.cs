@@ -8,8 +8,8 @@ namespace spellchecker
 	class Dictionary {
 		private HashSet<string> dict;
 
-		public Dictionary() {
-			this.dict = new HashSet<string>(){ "hund", "katze", "maus" };
+		public Dictionary(IEnumerable<string> words) {
+			this.dict = new HashSet<string> (words);
 		}
 
 		public bool Contains(string word) {
