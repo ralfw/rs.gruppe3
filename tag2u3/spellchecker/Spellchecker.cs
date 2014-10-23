@@ -1,6 +1,7 @@
 using System;
 using shellforms.controls;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace spellchecker
 {
@@ -10,12 +11,10 @@ namespace spellchecker
 		}
 
 		public string[] Worte_prüfen(Dictionary dict, string[] worte) {
-			var fehler = new List<string> ();
-			foreach (var w in worte) {
-				if (!dict.Contains(w.ToLower()))
-					fehler.Add(w);
-			}
-			return fehler.ToArray ();
+			return worte.Select (w => w.ToLower ())
+				        .Where (w => !dict.Contains (w))
+				        .Distinct ()
+				        .ToArray ();
 		}
 	}
 }
