@@ -8,7 +8,8 @@ namespace spellchecker
 		public static void Main (string[] args)
 		{
 			var ui = new UI ();
-			var sc = new Spellchecker ();
+			var spell = new Spellchecker ();
+			var sc = new Interactions (spell);
 
 			ui.Prüfgrundlage_verändert += text => {
 				var fehler = sc.Prüfen (text);

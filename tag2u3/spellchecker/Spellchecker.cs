@@ -5,18 +5,11 @@ using System.Collections.Generic;
 namespace spellchecker
 {
 	class Spellchecker {
-		public string[] Prüfen(string text) {
-			var worte = In_Worte_zerlegen (text);
-			return Worte_prüfen (worte);
-		}
-
-
-		string[] In_Worte_zerlegen(string text) {
+		public string[] In_Worte_zerlegen(string text) {
 			return text.Split (new[]{ ' ' }, StringSplitOptions.RemoveEmptyEntries);
 		}
 
-
-		string[] Worte_prüfen(string[] worte) {
+		public string[] Worte_prüfen(Dictionary dict, string[] worte) {
 			var wörterbuch = new HashSet<string>(){ "hund", "katze", "maus" };
 			var fehler = new List<string> ();
 			foreach (var w in worte) {
