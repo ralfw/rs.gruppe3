@@ -27,6 +27,6 @@ Global
 		{C1815700-0959-440A-ADD8-D9E7D9EF3E5A}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = spellchecker\spellchecker.csproj
+		StartupItem = expressioncalculator\expressioncalculator.csproj
 	EndGlobalSection
 EndGlobal

@@ -5,18 +5,7 @@ using System.Collections.Generic;
 namespace expressioncalculator
 {
 	class AST {
-		public Node Root;
-	}
-
-	abstract class Node {
-		public Node Left, Right;
-	}
-
-	class OperatorNode : Node {
-		public Operators Op;
-	}
-
-	class OperandNode : Node {
-		public int Value;
+		public List<Operators> Ops;
+		public List<int> Operands;
 	}
 }

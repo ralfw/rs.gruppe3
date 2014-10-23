@@ -8,20 +8,19 @@ namespace expressioncalculator
 		public void Eval(AST expression, Action<int> onResult, Action<string> onError) {
 			Errorhandling.Try (
 				() => {
-					var lists = Flatten(expression);
-					var result = Eval (lists);
+					var result = Eval (expression.Ops, expression.Operands);
 					onResult (result);
 				},
 				onError);
 		}
 
-		int Eval (Tuple<Operators[], int[]> lists) {
-			var valueStack = Stack_operands (lists.Item2);
-			return Apply_operators (lists.Item1, valueStack);
+		int Eval (IEnumerable<Operators> ops, IEnumerable<int> operands) {
+			var valueStack = Stack_operands (operands);
+			return Apply_operators (ops, valueStack);
 		}
 			
-		Stack<int> Stack_operands(int[] values) {
-			return new Stack<int> (values.Reverse ());
+		Stack<int> Stack_operands(IEnumerable<int> operands) {
+			return new Stack<int> (operands.Reverse ());
 		}
 			
 		int Apply_operators(IEnumerable<Operators> ops, Stack<int> operands) {
@@ -54,26 +53,6 @@ namespace expressioncalculator
 			default:
 				throw new NotImplementedException ("Invalid operator!");
 			}
-		}
-
-		Tuple<Operators[], int[]> Flatten(AST expression) {
-			var ops = new List<Operators> ();
-			var values = new List<int> ();
-			Flatten (ops, values, expression.Root);
-			return new Tuple<Operators[], int[]> (ops.ToArray (), values.ToArray ());
-		}
-
-		void Flatten(List<Operators> ops, List<int> values, Node node) {
-			var operand = (node as OperandNode);
-			if (operand != null) {
-				values.Add (operand.Value);
-				return;
-			}
-
-			var op = (node as OperatorNode);
-			Flatten (ops, values, op.Left);
-			Flatten (ops, values, op.Right);
-			ops.Add (op.Op);
 		}
 	}
 }
