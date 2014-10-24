@@ -5,7 +5,6 @@ using System.IO;
 
 namespace spellchecker
 {
-
 	class DictionaryRepo {
 		public Dictionary Laden() {
 			var words = File.ReadAllLines ("Deutsch.txt");
