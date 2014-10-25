@@ -1,12 +1,19 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="expressioncalculator/evaluation/Evaluator.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="expressioncalculator/domain/compiler/Parser.cs">
     <Files>
-      <File FileName="expressioncalculator/Program.cs" Line="27" Column="27" />
-      <File FileName="expressioncalculator/compiler/Compiler.cs" Line="30" Column="30" />
-      <File FileName="expressioncalculator/compiler/Parser.cs" Line="14" Column="14" />
-      <File FileName="expressioncalculator/compiler/Scanner.cs" Line="2" Column="2" />
-      <File FileName="expressioncalculator/evaluation/Evaluator.cs" Line="60" Column="60" />
+      <File FileName="expressioncalculator/Program.cs" Line="35" Column="35" />
+      <File FileName="expressioncalculator/domain/evaluation/ListEvaluator.cs" Line="52" Column="52" />
+      <File FileName="spellchecker/Program.cs" Line="35" Column="35" />
+      <File FileName="spellchecker/Interactions.cs" Line="23" Column="23" />
+      <File FileName="spellchecker/UI.cs" Line="45" Column="45" />
+      <File FileName="spellchecker/Spellchecker.cs" Line="25" Column="25" />
+      <File FileName="expressioncalculator/domain/compiler/Parser.cs" Line="37" Column="37" />
+      <File FileName="expressioncalculator/messages/AST.cs" Line="28" Column="28" />
+      <File FileName="spellchecker/Dictionary.cs" Line="34" Column="34" />
+      <File FileName="spellchecker/DictionaryRepo.cs" Line="2" Column="2" />
+      <File FileName="spellchecker/Deutsch.txt" Line="5" Column="5" />
+      <File FileName="expressioncalculator/domain/compiler/Compiler.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
