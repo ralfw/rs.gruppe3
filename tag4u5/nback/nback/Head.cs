@@ -7,6 +7,7 @@ namespace nback
 	public class Head {
 		IBody body;
 		Keyboard_loop kbl;
+		Countdown_display countdown;
 
 		public Head(IBody body) {
 			this.body = body;
@@ -14,6 +15,7 @@ namespace nback
 			this.body.Game_over += Show_report;
 
 			this.kbl = new Keyboard_loop ();
+			this.countdown = new Countdown_display ();
 		}
 
 		public void Run(string[] args) {
@@ -22,9 +24,11 @@ namespace nback
 
 		private void Show_next_symbol(GameState gs) {
 			this.kbl.Abort ();
+			this.countdown.Stop ();
 
 			Console.Write ("\n{0}: {1} - [Space, x] ", gs.i, gs.Symbol);
 
+			this.countdown.Start (gs.dSec);
 			this.kbl.Wait_for_key (c => {
 				switch(c) {
 				case ' ':
@@ -39,6 +43,7 @@ namespace nback
 
 		private void Show_report(GameReport report) {
 			this.kbl.Abort ();
+			this.countdown.Stop ();
 			Console.WriteLine ("\n\nResult: {0}/{1}, started @ {2} by {3}", report.PercentRecognized, report.PercentNotRecognized, 
 																            report.StartedAt, report.Name);
 		}
