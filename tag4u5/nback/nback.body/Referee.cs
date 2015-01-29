@@ -10,12 +10,15 @@ namespace nback.body
 		private GameReport report;
 		private List<char> symbols;
 		private List<Answers> answers;
-		private int l;
+		private int n, l;
 
-		public Referee(string name, int l) {
+		public Referee(string name, int n, int l) {
 			this.report = new GameReport ();
 			this.report.Name = name;
 			this.report.StartedAt = DateTime.Now;
+
+			this.n = n;
+			this.l = l;
 
 			this.symbols = new List<char> ();
 			this.answers = new List<Answers> ();
@@ -36,10 +39,11 @@ namespace nback.body
 				game_continues ();
 		}
 
+		//TODO: Do real reporting by checking the answers against the symbols
 		public GameReport Generate_report() {
 			this.report.Symbols = this.symbols.ToArray ();
-			this.report.PercentRecognized = 42;
-			this.report.PercentNotRecognized = 58;
+			this.report.PercentRecognized = this.answers.Count (a => a == Answers.Recognized) / this.l * 100;
+			this.report.PercentNotRecognized = 100 - this.report.PercentRecognized;
 			return this.report;
 		}
 

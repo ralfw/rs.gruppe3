@@ -41,26 +41,8 @@ namespace nback
 		}
 
 		private void Show_report(GameReport report) {
-			Console.WriteLine ("{0}/{1}, started @ {2} by {3}", report.PercentRecognized, report.PercentNotRecognized, 
-																report.StartedAt, report.Name);
-		}
-	}
-
-	class Keyboard_loop {
-		bool keepWaiting;
-
-		public void Wait_for_key(Action<char> onKey){
-			this.keepWaiting = true;
-			while (this.keepWaiting) {
-				if (Console.KeyAvailable) {
-					onKey (Console.ReadKey ().KeyChar);
-				}
-				System.Threading.Thread.Sleep (50);
-			}
-		}
-
-		public void Abort() {
-			this.keepWaiting = false;
+			Console.WriteLine ("\n\nResult: {0}/{1}, started @ {2} by {3}", report.PercentRecognized, report.PercentNotRecognized, 
+																            report.StartedAt, report.Name);
 		}
 	}
 }

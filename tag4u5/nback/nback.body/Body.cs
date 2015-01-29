@@ -23,7 +23,7 @@ namespace nback.body
 		public void Start_game (string name, int n, int l, int dSec)
 		{
 			this.symgen = new SymbolGenerator (n, l);
-			this.referee = new Referee (name, l);
+			this.referee = new Referee (name, n, l);
 
 			this.timer = new Timer (dSec);
 			this.timer.Started += Publish_symbol;
