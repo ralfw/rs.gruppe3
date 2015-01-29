@@ -24,13 +24,16 @@ namespace nback.body
 			this.answers = new List<Answers> ();
 		}
 
+
 		public void Register_symbol(char symbol) {
 			this.symbols.Add (symbol);
 		}
 
+
 		public void Register_answer(Answers answer) {
 			this.answers.Add (answer);
 		}
+
 
 		public void Check_game_over(Action game_continues, Action game_over) {
 			if (this.answers.Count == this.l)
@@ -38,6 +41,7 @@ namespace nback.body
 			else
 				game_continues ();
 		}
+
 
 		//TODO: Do real reporting by checking the answers against the symbols
 		public GameReport Generate_report() {

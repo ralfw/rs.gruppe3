@@ -12,6 +12,7 @@ namespace nback.body
 			this.l = l;
 		}
 
+		//TODO: Generate symbols in a non-trivial way
 		public char Generate() {
 			return (char)((int)'A' + this.l--);
 		}

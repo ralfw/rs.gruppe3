@@ -23,6 +23,7 @@ namespace nback.body
 
 		public int dSec { get { return this._dSec; } }
 
+
 		public event Action Started;
 		public event Action Timeout;
 	}

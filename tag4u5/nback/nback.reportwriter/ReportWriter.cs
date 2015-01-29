@@ -24,4 +24,3 @@ namespace nback.reportwriter
 		#endregion
 	}
 }
-

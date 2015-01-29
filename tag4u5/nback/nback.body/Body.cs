@@ -42,10 +42,16 @@ namespace nback.body
 		{
 			this.timer.Stop ();
 			Finish_game ();
-
 		}
 		#endregion
 	
+
+		private void Advance_symbol() {
+			var symbol = this.symgen.Generate ();
+			this.referee.Register_symbol (symbol);
+			this.timer.Start ();
+		}
+
 		private void Publish_symbol() {
 			var gs = new GameState{ 
 				Symbol = this.referee.Current_symbol,
@@ -62,13 +68,7 @@ namespace nback.body
 				Finish_game
 			);
 		}
-
-		private void Advance_symbol() {
-			var symbol = this.symgen.Generate ();
-			this.referee.Register_symbol (symbol);
-			this.timer.Start ();
-		}
-
+			
 		private void Finish_game() {
 			var report = this.referee.Generate_report();
 			this.reporter.Write(report);
