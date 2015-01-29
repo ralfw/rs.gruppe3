@@ -12,12 +12,8 @@ namespace nback.body
 
 		public Body(IReportWriter reporter) {
 			this.reporter = reporter;
-
-			this.referee = new Referee ();
-			this.timer = new Timer ();
-			this.symgen = new SymbolGenerator ();
 		}
-
+			
 
 		#region IBody implementation
 		public event Action<GameState> Next_symbol_generated;
@@ -26,19 +22,57 @@ namespace nback.body
 
 		public void Start_game (string name, int n, int l, int dSec)
 		{
-			throw new NotImplementedException ();
+			this.symgen = new SymbolGenerator (n, l);
+			this.referee = new Referee (name, l);
+
+			this.timer = new Timer (dSec);
+			this.timer.Started += Publish_symbol;
+			this.timer.Timeout += () => Process_answer (Answers.NotRecognized);
+
+			Advance_symbol ();
 		}
 
 		public void Register_answer (Answers answer)
 		{
-			throw new NotImplementedException ();
+			this.timer.Stop ();
+			Process_answer (answer);
 		}
 
 		public void Stop_game ()
 		{
-			throw new NotImplementedException ();
+			this.timer.Stop ();
+			Finish_game ();
+
 		}
 		#endregion
+	
+		private void Publish_symbol() {
+			var gs = new GameState{ 
+				Symbol = this.referee.Current_symbol,
+				i = this.referee.Current_symbol_index,
+				dSec = timer.dSec
+			};
+			this.Next_symbol_generated (gs);
+		}
+
+		private void Process_answer(Answers answer) {
+			this.referee.Register_answer (answer);
+			this.referee.Check_game_over (
+				Advance_symbol,
+				Finish_game
+			);
+		}
+
+		private void Advance_symbol() {
+			var symbol = this.symgen.Generate ();
+			this.referee.Register_symbol (symbol);
+			this.timer.Start ();
+		}
+
+		private void Finish_game() {
+			var report = this.referee.Generate_report();
+			this.reporter.Write(report);
+			this.Game_over(report);
+		}
 	}
 }
-

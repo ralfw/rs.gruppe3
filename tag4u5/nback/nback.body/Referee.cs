@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using nback.contracts;
 using System.Collections.Generic;
 
@@ -11,8 +12,7 @@ namespace nback.body
 		private List<Answers> answers;
 		private int l;
 
-
-		public void Start_game(string name, int l) {
+		public Referee(string name, int l) {
 			this.report = new GameReport ();
 			this.report.Name = name;
 			this.report.StartedAt = DateTime.Now;
@@ -29,9 +29,11 @@ namespace nback.body
 			this.answers.Add (answer);
 		}
 
-		public void Check_game_over(Action game_over) {
+		public void Check_game_over(Action game_continues, Action game_over) {
 			if (this.answers.Count == this.l)
 				game_over ();
+			else
+				game_continues ();
 		}
 
 		public GameReport Generate_report() {
@@ -40,5 +42,9 @@ namespace nback.body
 			this.report.PercentNotRecognized = 58;
 			return this.report;
 		}
+
+
+		public char Current_symbol { get { return this.symbols.Last (); } }
+		public int Current_symbol_index { get { return this.symbols.Count; } }
 	}
 }

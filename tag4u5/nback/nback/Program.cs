@@ -9,7 +9,7 @@ namespace nback
 	{
 		public static void Main (string[] args)
 		{
-			IReportWriter reporter = new ReportWriter ();
+			IReportWriter reporter = new ReportWriter ("report.txt");
 			IBody body = new Body (reporter);
 			var head = new Head (body);
 
