@@ -11,12 +11,12 @@ namespace nback.body
 		public char Generate(int n, int l) {
 			this.l = l;
 			this.n = n;
-			return 'A' + this.l--;
+			return (char)((int)'A' + this.l--);
 		}
 			
 		// Added a second function to generate the next symbol
 		public char Generate() {
-			return 'A' + this.l--;
+			return (char)((int)'A' + this.l--);
 		}
 	}
 }
