@@ -42,7 +42,8 @@ namespace nback.body
 		//TODO: Do real reporting by checking the answers against the symbols
 		public GameReport Generate_report() {
 			this.report.Symbols = this.symbols.ToArray ();
-			this.report.PercentRecognized = this.answers.Count (a => a == Answers.Recognized) / this.l * 100;
+
+			this.report.PercentRecognized = (int)(this.answers.Count (a => a == Answers.Recognized) / (double)this.l * 100);
 			this.report.PercentNotRecognized = 100 - this.report.PercentRecognized;
 			return this.report;
 		}
