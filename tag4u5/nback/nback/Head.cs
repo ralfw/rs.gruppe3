@@ -18,9 +18,11 @@ namespace nback
 			this.countdown = new Countdown_display ();
 		}
 
+
 		public void Run(string[] args) {
 			this.body.Start_game (args [0], int.Parse (args [1]), int.Parse (args [2]), int.Parse (args [3]));
 		}
+
 
 		private void Show_next_symbol(GameState gs) {
 			this.kbl.Abort ();
@@ -40,6 +42,7 @@ namespace nback
 				}
 			});
 		}
+
 
 		private void Show_report(GameReport report) {
 			this.kbl.Abort ();

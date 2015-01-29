@@ -15,10 +15,10 @@ namespace nback.reportwriter
 		#region IReportWriter implementation
 		public void Write (GameReport report)
 		{
-			var reporttext = string.Format ("{0}\n{1}\n{2} / {3}\n{4}", 
+			var reporttext = string.Format ("{0}\n{1}\n{2} / {3}\n{4}\n", 
 												report.Name, report.StartedAt, 
 												report.PercentRecognized, report.PercentNotRecognized, 
-												report.Symbols.ToString());
+												new string(report.Symbols));
 			File.AppendAllText (this.reportfilepath, reporttext);
 		}
 		#endregion
