@@ -1,6 +1,7 @@
 ﻿using System;
 using nback.body;
 using nback.contracts;
+using nback.reportwriter;
 
 namespace nback
 {
@@ -8,7 +9,8 @@ namespace nback
 	{
 		public static void Main (string[] args)
 		{
-			IBody body = new Body ();
+			IReportWriter reporter = new ReportWriter ();
+			IBody body = new Body (reporter);
 			var head = new Head (body);
 
 			head.Run (args);

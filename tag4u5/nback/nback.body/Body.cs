@@ -5,6 +5,20 @@ namespace nback.body
 {
 	public class Body : IBody
 	{
+		IReportWriter reporter;
+		Referee referee;
+		Timer timer;
+		SymbolGenerator symgen;
+
+		public Body(IReportWriter reporter) {
+			this.reporter = reporter;
+
+			this.referee = new Referee ();
+			this.timer = new Timer ();
+			this.symgen = new SymbolGenerator ();
+		}
+
+
 		#region IBody implementation
 		public event Action<GameState> Next_symbol_generated;
 		public event Action<GameReport> Game_over;

@@ -33,6 +33,9 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Body.cs" />
+    <Compile Include="Referee.cs" />
+    <Compile Include="SymbolGenerator.cs" />
+    <Compile Include="Timer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
