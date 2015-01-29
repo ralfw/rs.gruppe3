@@ -1,4 +1,6 @@
 ﻿using System;
+using nback.body;
+using nback.contracts;
 
 namespace nback
 {
@@ -6,7 +8,10 @@ namespace nback
 	{
 		public static void Main (string[] args)
 		{
-			Console.WriteLine ("Hello World!");
+			IBody body = new Body ();
+			var head = new Head (body);
+
+			head.Run (args);
 		}
 	}
 }
