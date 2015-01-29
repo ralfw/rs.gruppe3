@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nback", "nback\nback.csproj", "{8BF905D4-74A3-4EEB-88DD-053C6B20E0BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nback.contracts", "nback.contracts\nback.contracts.csproj", "{745DD097-8DD9-47C9-89EE-C4EF6198A174}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nback.body", "nback.body\nback.body.csproj", "{E7BF77C6-D831-49A9-8B4E-B8FA154DCD9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nback.reportwriter", "nback.reportwriter\nback.reportwriter.csproj", "{8C0033EF-72ED-4A47-99D0-27A6FCFBACD9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{745DD097-8DD9-47C9-89EE-C4EF6198A174}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{745DD097-8DD9-47C9-89EE-C4EF6198A174}.Debug|x86.Build.0 = Debug|Any CPU
+		{745DD097-8DD9-47C9-89EE-C4EF6198A174}.Release|x86.ActiveCfg = Release|Any CPU
+		{745DD097-8DD9-47C9-89EE-C4EF6198A174}.Release|x86.Build.0 = Release|Any CPU
+		{8BF905D4-74A3-4EEB-88DD-053C6B20E0BB}.Debug|x86.ActiveCfg = Debug|x86
+		{8BF905D4-74A3-4EEB-88DD-053C6B20E0BB}.Debug|x86.Build.0 = Debug|x86
+		{8BF905D4-74A3-4EEB-88DD-053C6B20E0BB}.Release|x86.ActiveCfg = Release|x86
+		{8BF905D4-74A3-4EEB-88DD-053C6B20E0BB}.Release|x86.Build.0 = Release|x86
+		{8C0033EF-72ED-4A47-99D0-27A6FCFBACD9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8C0033EF-72ED-4A47-99D0-27A6FCFBACD9}.Debug|x86.Build.0 = Debug|Any CPU
+		{8C0033EF-72ED-4A47-99D0-27A6FCFBACD9}.Release|x86.ActiveCfg = Release|Any CPU
+		{8C0033EF-72ED-4A47-99D0-27A6FCFBACD9}.Release|x86.Build.0 = Release|Any CPU
+		{E7BF77C6-D831-49A9-8B4E-B8FA154DCD9A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E7BF77C6-D831-49A9-8B4E-B8FA154DCD9A}.Debug|x86.Build.0 = Debug|Any CPU
+		{E7BF77C6-D831-49A9-8B4E-B8FA154DCD9A}.Release|x86.ActiveCfg = Release|Any CPU
+		{E7BF77C6-D831-49A9-8B4E-B8FA154DCD9A}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
