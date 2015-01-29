@@ -4,7 +4,6 @@ using nback.contracts;
 
 namespace nback
 {
-
 	public class Head {
 		IBody body;
 		Keyboard_loop kbl;
@@ -26,21 +25,20 @@ namespace nback
 
 			Console.Write ("\n{0}: {1} - [Space, x] ", gs.i, gs.Symbol);
 
-			this.kbl.Wait_for_key (
-				c => {
-					switch(c) {
-					case ' ':
-						this.body.Register_answer(Answers.Recognized);
-						break;
-					case 'x':
-						this.body.Stop_game();
-						break;
-					}
+			this.kbl.Wait_for_key (c => {
+				switch(c) {
+				case ' ':
+					this.body.Register_answer(Answers.Recognized);
+					break;
+				case 'x':
+					this.body.Stop_game();
+					break;
 				}
-			);
+			});
 		}
 
 		private void Show_report(GameReport report) {
+			this.kbl.Abort ();
 			Console.WriteLine ("\n\nResult: {0}/{1}, started @ {2} by {3}", report.PercentRecognized, report.PercentNotRecognized, 
 																            report.StartedAt, report.Name);
 		}

@@ -4,7 +4,6 @@ using nback.contracts;
 
 namespace nback
 {
-
 	class Keyboard_loop {
 		bool keepWaiting;
 
@@ -13,6 +12,7 @@ namespace nback
 			while (this.keepWaiting) {
 				if (Console.KeyAvailable) {
 					onKey (Console.ReadKey ().KeyChar);
+					break;
 				}
 				System.Threading.Thread.Sleep (50);
 			}
