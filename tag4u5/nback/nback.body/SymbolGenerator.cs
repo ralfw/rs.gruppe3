@@ -8,14 +8,14 @@ namespace nback.body
 		private int n, l;
 
 		// Added l to the param list
-		public char Start_symbol_series(int n, int l) {
+		public char Generate(int n, int l) {
 			this.l = l;
 			this.n = n;
 			return 'A' + this.l--;
 		}
 			
 		// Added a second function to generate the next symbol
-		public char Get_next_symbol_in_series() {
+		public char Generate() {
 			return 'A' + this.l--;
 		}
 	}
