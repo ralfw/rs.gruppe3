@@ -25,6 +25,7 @@ namespace nback
 		}
 
 
+		// Command line parsing done with CLAP: http://adrianaisemberg.github.io/CLAP
 		[Verb(IsDefault=true)]
 		public void StartGame(
 			[Required]			string name,
