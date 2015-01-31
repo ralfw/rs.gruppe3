@@ -1,6 +1,7 @@
 using System;
 using nback.body;
 using nback.contracts;
+using CLAP;
 
 namespace nback
 {
@@ -20,7 +21,18 @@ namespace nback
 
 
 		public void Run(string[] args) {
-			this.body.Start_game (args [0], int.Parse (args [1]), int.Parse (args [2]), int.Parse (args [3]));
+			Parser.Run (args, this);
+		}
+
+
+		[Verb(IsDefault=true)]
+		public void StartGame(
+			[Required]			string name,
+			[DefaultValue(3)]	int n, 
+			[Required]			int l, 
+			[DefaultValue(3),
+			 Aliases("d")]		int dSec) {
+			this.body.Start_game (name, n, l, dSec);
 		}
 
 

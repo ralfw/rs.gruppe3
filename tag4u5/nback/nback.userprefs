@@ -1,11 +1,13 @@
 ﻿<Properties StartupItem="nback/nback.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="nback.body/Body.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="nback/Head.cs">
     <Files>
-      <File FileName="nback.body/Timer.cs" Line="3" Column="3" />
-      <File FileName="nback.body/SymbolGenerator.cs" Line="48" Column="48" />
-      <File FileName="nback.body/Referee.cs" Line="3" Column="3" />
-      <File FileName="nback.body/Body.cs" Line="16" Column="16" />
+      <File FileName="nback.body/Timer.cs" Line="1" Column="1" />
+      <File FileName="nback.body/SymbolGenerator.cs" Line="1" Column="1" />
+      <File FileName="nback.body/Referee.cs" Line="1" Column="1" />
+      <File FileName="nback.body/Body.cs" Line="1" Column="1" />
+      <File FileName="nback/Program.cs" Line="1" Column="1" />
+      <File FileName="nback/Head.cs" Line="28" Column="28" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
