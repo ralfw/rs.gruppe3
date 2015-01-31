@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace nback.body
 {
-	class Referee
+	public class Referee
 	{
 		private GameReport report;
 		private List<char> symbols;

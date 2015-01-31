@@ -6,11 +6,21 @@ namespace nback.body
 	public class Body : IBody
 	{
 		IReportWriter reporter;
+		Func<int, int, SymbolGenerator> symgenFactory;
+		Func<string, int, int, Referee> refereeFactory;
+		Func<int, Timer> timerFactory;
+
 		Referee referee;
 		Timer timer;
 		SymbolGenerator symgen;
 
-		public Body(IReportWriter reporter) {
+		public Body(IReportWriter reporter, 
+					Func<int,int,SymbolGenerator> symgenFactory, 
+					Func<string,int,int,Referee> refereeFactory,
+					Func<int, Timer> timerFactory) {
+			this.timerFactory = timerFactory;
+			this.refereeFactory = refereeFactory;
+			this.symgenFactory = symgenFactory;
 			this.reporter = reporter;
 		}
 			
@@ -22,10 +32,10 @@ namespace nback.body
 
 		public void Start_game (string name, int n, int l, int dSec)
 		{
-			this.symgen = new SymbolGenerator (n, l);
-			this.referee = new Referee (name, n, l);
+			this.symgen = this.symgenFactory (n, l);
+			this.referee = this.refereeFactory (name, n, l);
 
-			this.timer = new Timer (dSec);
+			this.timer = this.timerFactory (dSec);
 			this.timer.Started += Publish_symbol;
 			this.timer.Timeout += () => Process_answer (Answers.NotRecognized);
 

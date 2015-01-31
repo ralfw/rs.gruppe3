@@ -3,7 +3,7 @@ using nback.contracts;
 
 namespace nback.body
 {
-	class SymbolGenerator
+	public class SymbolGenerator
 	{
 		private int n, l;
 

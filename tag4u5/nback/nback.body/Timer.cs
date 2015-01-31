@@ -3,7 +3,7 @@ using nback.contracts;
 
 namespace nback.body
 {
-	class Timer {
+	public class Timer {
 		System.Threading.Timer timer;
 		int _dSec;
 
